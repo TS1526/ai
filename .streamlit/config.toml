@@ -3,4 +3,4 @@ showSidebarNavigation = false
 [theme]
 base = "dark"
 background="images/OIP-C.jpg"
-textColor = "#CCFF00"
+textColor = "#9900FF"
