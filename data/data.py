@@ -36,3 +36,15 @@ def query_message_by_user_id(user_id):
     # 字典类型的列表[{},{},{}]
     list = cur.fetchall()
     return list
+def query_message_by_id(user_id):
+    sql = "Select * from chat_message where user_id = %s"
+    cur = conn.cursor()
+#根据用户id查询当前用户的AI助手的聊天的函数
+    result = cur.execute(sql,[user_id])
+    result = cur.fetchall()
+    return result
+def add_chat_message(user_id,message,role,message_time):
+    sql = "insert into chat_message (user_id,message,role,message_time) values (%s,%s,%s,%s)"
+    cur = conn.cursor()
+    cur.execute(sql,[user_id,message,role,message_time])
+    conn.commit()

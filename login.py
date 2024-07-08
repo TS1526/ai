@@ -5,12 +5,9 @@ import time
 st.set_page_config(
     page_title="私人助手登录页面",
     page_icon="🙂"
+
 )
-background_css="""
-body{
-background-image:url('')
-}
-"""
+
 # 设置页面的组件的，两个输入框+一个登录按钮+一个去注册按钮
 st.title("私人助手登录页面")
 username = st.text_input("请输入用户名")
