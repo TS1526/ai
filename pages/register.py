@@ -2,11 +2,25 @@ import streamlit as st
 import re
 import data.data as dd
 import time
-
+import base64
 st.set_page_config(
     page_title="私人助手注册页",
     page_icon="😀"
 )
+def main_bg(main_bg):
+    main_bg_ext = "png"
+    st.markdown(
+        f"""
+         <style>
+         .stApp {{
+             background: url(data:image/{main_bg_ext};base64,{base64.b64encode(open(main_bg, "rb").read()).decode()});
+             background-size: cover
+         }}
+         </style>
+         """,
+        unsafe_allow_html=True
+    )
+    main_bg("images/OIP-C.jpg")
 st.title("私人助手注册页 🤭")
 
 username = st.text_input("请输入手机号")

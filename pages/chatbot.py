@@ -1,17 +1,30 @@
 import streamlit as st
 import data.data as dd
 import datetime
-
+import base64
 import time
 st.set_page_config(
     page_title="Register",
     page_icon="😊"
 )
-
+def main_bg(main_bg):
+    main_bg_ext = "png"
+    st.markdown(
+        f"""
+         <style>
+         .stApp {{
+             background: url(data:image/{main_bg_ext};base64,{base64.b64encode(open(main_bg, "rb").read()).decode()});
+             background-size: cover
+         }}
+         </style>
+         """,
+        unsafe_allow_html=True
+    )
+main_bg("images/OIP-C.jpg")
 
 user_id = st.session_state.user_id
 username = st.session_state.username
-st.title('AI问答小助手👏👏👏')
+st.title('AI问答小助手🙂')
 st.subheader(f"欢迎{username}使用")
 st.text("这是一个聊天小助手")
 
