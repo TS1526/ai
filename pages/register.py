@@ -7,7 +7,7 @@ st.set_page_config(
     page_title="私人助手注册页",
     page_icon="😀"
 )
-st.title("私人助手注册页 👏")
+st.title("私人助手注册页 🤭")
 
 username = st.text_input("请输入手机号")
 password = st.text_input("请输入密码",type="password")
@@ -19,7 +19,7 @@ def register(username,password,repass):
     if username and password and repass:
         if re.match('^(13|15|17|18|19)[0-9]{9}$', username):
             if password == repass and len(password) >=8:
-                if dd.query_user_no_exists(username):
+                if dd.query_user_by_username(username) is None:
                     dd.add_user(username,password)
                     st.success("注册成功")
                     time.sleep(2)

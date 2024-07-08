@@ -2,5 +2,4 @@
 showSidebarNavigation = false
 [theme]
 base = "dark"
-background="images/OIP-C.jpg"
 textColor = "#9900FF"

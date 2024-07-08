@@ -29,13 +29,19 @@ def add_user(username,password):
     conn.commit()
 
 # 3、根据用户id查询当前用户的AI助手聊天信息的函数
-def query_message_by_user_id(user_id):
-    sql = "select * from chat_message where user_id = %s order by message_time asc"
+def query_user_by_username(username):
+    sql = "Select * from sys_user where username = %s"
     cur = conn.cursor()
-    cur.execute(sql, [user_id])
-    # 字典类型的列表[{},{},{}]
-    list = cur.fetchall()
-    return list
+    cur.execute(sql,[username])
+    result = cur.fetchone()
+    return result
+
+def add_user(username,password):
+    sql = "insert into sys_user (username,password) values (%s,%s)"
+    cur = conn.cursor()
+    cur.execute(sql,[username,password])
+    conn.commit()
+
 def query_message_by_id(user_id):
     sql = "Select * from chat_message where user_id = %s"
     cur = conn.cursor()
@@ -43,6 +49,7 @@ def query_message_by_id(user_id):
     result = cur.execute(sql,[user_id])
     result = cur.fetchall()
     return result
+
 def add_chat_message(user_id,message,role,message_time):
     sql = "insert into chat_message (user_id,message,role,message_time) values (%s,%s,%s,%s)"
     cur = conn.cursor()
